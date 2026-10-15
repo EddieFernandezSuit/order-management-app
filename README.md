@@ -26,6 +26,16 @@ order-management-app/
 
 ## Getting Started
 
+### Run everything (recommended)
+
+From the repository root:
+
+```bash
+npm run install:all   # install backend + frontend dependencies
+npm run dev           # start backend (:5000) and frontend (:5173) together
+npm test              # run all backend + frontend tests once
+```
+
 ### Backend
 
 ```bash
