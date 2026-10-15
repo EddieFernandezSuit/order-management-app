@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom'
 import api from '../api/client'
 import { useCart } from '../context/CartContext'
 
-
 export default function Menu() {
   const [items, setItems] = useState([])
   const [loading, setLoading] = useState(true)
@@ -17,22 +16,37 @@ export default function Menu() {
       .finally(() => setLoading(false))
   }, [])
 
-  if (loading) return <p>Loading...</p>
-  if (error) return <p>{error}</p>
-
   return (
     <div>
+      <header className="topbar">
+        <span className="brand">Order Management</span>
+        <Link className="cart-link" to="/cart">Cart ({count})</Link>
+      </header>
+
       <h1>Menu</h1>
-      <Link to="/cart">Cart ({count})</Link>
-      {items.map((item) => (
-        <div key={item.id}>
-          <img src={item.image} alt={item.name} width={160} />
-          <h2>{item.name}</h2>
-          <p>{item.description}</p>
-          <p>${item.price.toFixed(2)}</p>
-          <button type="button" onClick={() => addItem(item)}>Add to cart</button>
-        </div>
-      ))}
+
+      {loading && <p className="muted">Loading...</p>}
+      {error && <p role="alert" className="alert">{error}</p>}
+
+      <div className="menu-grid">
+        {items.map((item) => (
+          <article key={item.id} className="menu-card">
+            <img src={item.image} alt={item.name} />
+            <div className="body">
+              <h2>{item.name}</h2>
+              <p className="desc">{item.description}</p>
+              <span className="price">${item.price.toFixed(2)}</span>
+              <button
+                type="button"
+                className="btn btn-primary"
+                onClick={() => addItem(item)}
+              >
+                Add to cart
+              </button>
+            </div>
+          </article>
+        ))}
+      </div>
     </div>
   )
 }

@@ -8,7 +8,7 @@ export default function Cart() {
     return (
       <div>
         <h1>Your Cart</h1>
-        <p>Your cart is empty.</p>
+        <p className="muted">Your cart is empty.</p>
         <Link to="/">Back to menu</Link>
       </div>
     )
@@ -17,29 +17,40 @@ export default function Cart() {
   return (
     <div>
       <h1>Your Cart</h1>
-      <ul>
+
+      <ul className="cart-list">
         {items.map((item) => (
-          <li key={item.id}>
-            <span>{item.name}</span>
-            <span>${item.price.toFixed(2)}</span>
+          <li key={item.id} className="cart-item">
+            <div>
+              <strong>{item.name}</strong>
+              <div className="desc">${item.price.toFixed(2)} each</div>
+            </div>
+
+            <div className="qty-controls">
+              <button
+                type="button"
+                className="btn qty-btn"
+                aria-label={`Decrease quantity of ${item.name}`}
+                onClick={() => setQty(item.id, item.qty - 1)}
+              >
+                -
+              </button>
+              <span data-testid={`qty-${item.id}`}>{item.qty}</span>
+              <button
+                type="button"
+                className="btn qty-btn"
+                aria-label={`Increase quantity of ${item.name}`}
+                onClick={() => setQty(item.id, item.qty + 1)}
+              >
+                +
+              </button>
+            </div>
+
+            <span className="price">${(item.price * item.qty).toFixed(2)}</span>
+
             <button
               type="button"
-              aria-label={`Decrease quantity of ${item.name}`}
-              onClick={() => setQty(item.id, item.qty - 1)}
-            >
-              -
-            </button>
-            <span data-testid={`qty-${item.id}`}>{item.qty}</span>
-            <button
-              type="button"
-              aria-label={`Increase quantity of ${item.name}`}
-              onClick={() => setQty(item.id, item.qty + 1)}
-            >
-              +
-            </button>
-            <span>${(item.price * item.qty).toFixed(2)}</span>
-            <button
-              type="button"
+              className="btn"
               aria-label={`Remove ${item.name}`}
               onClick={() => removeItem(item.id)}
             >
@@ -48,8 +59,9 @@ export default function Cart() {
           </li>
         ))}
       </ul>
-      <p>Total: ${total.toFixed(2)}</p>
-      <Link to="/checkout">Proceed to checkout</Link>
+
+      <p className="total">Total: ${total.toFixed(2)}</p>
+      <Link className="btn btn-primary" to="/checkout">Proceed to checkout</Link>
     </div>
   )
 }

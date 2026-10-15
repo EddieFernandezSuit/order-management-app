@@ -15,7 +15,7 @@ export default function Checkout() {
     return (
       <div>
         <h1>Checkout</h1>
-        <p>Your cart is empty.</p>
+        <p className="muted">Your cart is empty.</p>
         <Link to="/">Back to menu</Link>
       </div>
     )
@@ -59,25 +59,33 @@ export default function Checkout() {
   return (
     <div>
       <h1>Checkout</h1>
-      <form onSubmit={handleSubmit} noValidate>
-        <div>
+
+      <form className="form" onSubmit={handleSubmit} noValidate>
+        <div className="field">
           <label htmlFor="name">Name</label>
           <input id="name" name="name" value={form.name} onChange={handleChange} />
-          {errors.name && <p role="alert">{errors.name}</p>}
+          {errors.name && <p className="error" role="alert">{errors.name}</p>}
         </div>
-        <div>
+
+        <div className="field">
           <label htmlFor="address">Address</label>
           <input id="address" name="address" value={form.address} onChange={handleChange} />
-          {errors.address && <p role="alert">{errors.address}</p>}
+          {errors.address && <p className="error" role="alert">{errors.address}</p>}
         </div>
-        <div>
+
+        <div className="field">
           <label htmlFor="phone">Phone</label>
           <input id="phone" name="phone" value={form.phone} onChange={handleChange} />
-          {errors.phone && <p role="alert">{errors.phone}</p>}
+          {errors.phone && <p className="error" role="alert">{errors.phone}</p>}
         </div>
-        <p>Total: ${total.toFixed(2)}</p>
-        <button type="submit" disabled={submitting}>Place order</button>
-        {serverError && <p role="alert">{serverError}</p>}
+
+        <p className="total">Total: ${total.toFixed(2)}</p>
+
+        <button type="submit" className="btn btn-primary" disabled={submitting}>
+          {submitting ? 'Placing order...' : 'Place order'}
+        </button>
+
+        {serverError && <p className="alert" role="alert">{serverError}</p>}
       </form>
     </div>
   )
