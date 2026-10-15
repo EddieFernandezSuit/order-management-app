@@ -1,8 +1,8 @@
 export const menu = [
   {
     id: 1,
-    name: 'Margherita Pizza',
-    description: 'Classic tomato sauce, mozzarella, and fresh basil.',
+    name: 'Cheese Pizza',
+    description: 'Classic tomato sauce and melted mozzarella cheese.',
     price: 12.99,
     image: '/images/pizza.svg'
   },
