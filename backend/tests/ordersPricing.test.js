@@ -21,7 +21,7 @@ describe('POST /api/orders pricing', () => {
 
     expect(res.status).toBe(201);
     expect(res.body.items[0].price).toBe(12.99);
-    expect(res.body.items[0].name).toBe('Margherita Pizza');
+    expect(res.body.items[0].name).toBe('Cheese Pizza');
     expect(res.body.items[0].lineTotal).toBe(25.98);
     expect(res.body.total).toBe(33.97);
   });
