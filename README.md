@@ -78,6 +78,25 @@ curl -X POST http://localhost:5000/api/orders \
 
 Prices and totals are computed server-side from the menu; client-sent prices are ignored.
 
+## Real-Time Order Status
+
+Status progression is simulated on the backend and observed by the frontend via polling:
+
+- On server start, `startStatusProgression()` advances every active order one step
+  every `STATUS_TRANSITION_MS` (default 5000ms) through
+  `Order Received → Preparing → Out for Delivery → Delivered`.
+- The `OrderStatus` page polls `GET /api/orders/:id` every 3s and stops once the
+  order is `Delivered`.
+
+## Environment Variables
+
+| Variable                | App      | Default                 | Purpose                                   |
+| ----------------------- | -------- | ----------------------- | ----------------------------------------- |
+| `PORT`                  | backend  | `5000`                  | HTTP port                                 |
+| `STATUS_TRANSITION_MS`  | backend  | `5000`                  | Delay between simulated status changes    |
+| `ALLOWED_ORIGINS`       | backend  | *(all)*                 | Comma-separated CORS allow-list           |
+| `VITE_API_URL`          | frontend | `http://localhost:5000` | Backend base URL                          |
+
 ## Validation Rules
 
 - `items` must be a non-empty array.
@@ -90,8 +109,23 @@ Prices and totals are computed server-side from the menu; client-sent prices are
 
 Tests are written following TDD:
 
-- Backend: menu retrieval, order CRUD, validation, server-side pricing, and error handling.
-- Frontend: key UI components (menu, cart, checkout, order status).
+- Backend: menu retrieval, order CRUD, validation, server-side pricing, error handling,
+  and status progression.
+- Frontend: cart logic, menu, cart, checkout, and order status (including polling).
+
+```bash
+cd backend  && npm test
+cd frontend && npm test
+```
+
+## Deployment
+
+- **Frontend (Vercel/Netlify):** set root directory to `frontend`, build command
+  `npm run build`, output `dist`, and `VITE_API_URL` to the deployed backend URL.
+- **Backend (Render/Railway/Fly):** start command `npm start` in `backend`, and set
+  `ALLOWED_ORIGINS` to the deployed frontend URL.
+
+Since data is stored in memory, orders reset when the backend restarts.
 
 ## License
 

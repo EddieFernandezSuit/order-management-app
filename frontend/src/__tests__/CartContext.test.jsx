@@ -1,6 +1,7 @@
 import { renderHook, act } from '@testing-library/react';
 import { describe, it, expect } from 'vitest';
-import { CartProvider, useCart } from '../context/CartContext';
+import { CartProvider } from '../context/CartProvider';
+import { useCart } from '../context/CartContext';
 
 describe('CartContext', () => {
   it('adds an item and accumulates quantity', () => {

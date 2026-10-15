@@ -5,7 +5,8 @@ import ordersRouter from './routes/orders.js';
 
 const app = express();
 
-app.use(cors());
+const allowedOrigins = process.env.ALLOWED_ORIGINS;
+app.use(cors(allowedOrigins ? { origin: allowedOrigins.split(',') } : {}));
 app.use(express.json());
 app.use('/api/menu', menuRouter);
 app.use('/api/orders', ordersRouter);
