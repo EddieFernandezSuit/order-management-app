@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" role="img" aria-label="Classic burger">
+  <defs>
+    <linearGradient id="bbg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#fff6ea" />
+      <stop offset="1" stop-color="#ffe2c4" />
+    </linearGradient>
+  </defs>
+  <rect width="400" height="300" fill="url(#bbg)" />
+  <path d="M116 148 a84 66 0 0 1 168 0 z" fill="#e0a75a" />
+  <g fill="#fff3d6">
+    <ellipse cx="160" cy="118" rx="6" ry="4" />
+    <ellipse cx="200" cy="108" rx="6" ry="4" />
+    <ellipse cx="240" cy="120" rx="6" ry="4" />
+    <ellipse cx="180" cy="132" rx="5" ry="3.5" />
+    <ellipse cx="222" cy="134" rx="5" ry="3.5" />
+  </g>
+  <rect x="122" y="158" width="156" height="12" rx="5" fill="#f6c445" />
+  <path d="M122 172 h156 v8 a6 6 0 0 1 -6 6 h-14 a6 6 0 0 1 -6 -6 v-4 h-60 v4 a6 6 0 0 1 -6 6 h-58 a6 6 0 0 1 -6 -6 z" fill="#f0b83a" />
+  <rect x="118" y="178" width="164" height="20" rx="10" fill="#7a4a2b" />
+  <path d="M112 168 q18 -14 36 0 t36 0 t36 0 t36 0" fill="none" stroke="#5eb04a" stroke-width="11" stroke-linecap="round" />
+  <path d="M116 210 h168 a20 20 0 0 1 -20 22 h-128 a20 20 0 0 1 -20 -22 z" fill="#d99a4e" />
+</svg>

@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" role="img" aria-label="Sweet potato fries">
+  <defs>
+    <linearGradient id="fbg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#fff6ea" />
+      <stop offset="1" stop-color="#ffe2c4" />
+    </linearGradient>
+    <linearGradient id="fry" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#f6b24a" />
+      <stop offset="1" stop-color="#d9862c" />
+    </linearGradient>
+  </defs>
+  <rect width="400" height="300" fill="url(#fbg)" />
+  <g fill="url(#fry)" stroke="#c97722" stroke-width="2">
+    <rect x="150" y="70" width="18" height="120" rx="8" transform="rotate(-8 159 130)" />
+    <rect x="176" y="58" width="18" height="130" rx="8" transform="rotate(4 185 123)" />
+    <rect x="202" y="66" width="18" height="126" rx="8" transform="rotate(-3 211 129)" />
+    <rect x="228" y="76" width="18" height="116" rx="8" transform="rotate(10 237 134)" />
+  </g>
+  <path d="M138 150 L262 150 L246 252 L154 252 Z" fill="#d94f3d" />
+  <path d="M150 138 L250 138 L246 156 L154 156 Z" fill="#c8432f" />
+  <g fill="#f2d9a0">
+    <circle cx="200" cy="196" r="22" />
+    <circle cx="200" cy="196" r="13" fill="#e3c377" />
+  </g>
+</svg>
