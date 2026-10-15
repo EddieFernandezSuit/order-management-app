@@ -130,12 +130,32 @@ cd frontend && npm test
 
 ## Deployment
 
-- **Frontend (Vercel/Netlify):** set root directory to `frontend`, build command
-  `npm run build`, output `dist`, and `VITE_API_URL` to the deployed backend URL.
-- **Backend (Render/Railway/Fly):** start command `npm start` in `backend`, and set
-  `ALLOWED_ORIGINS` to the deployed frontend URL.
+The frontend and backend are deployed separately and communicate over `VITE_API_URL` /
+`ALLOWED_ORIGINS`.
 
-Since data is stored in memory, orders reset when the backend restarts.
+### Backend (Render)
+
+1. New → **Blueprint** → connect this repo. Render reads `render.yaml`.
+2. Set `ALLOWED_ORIGINS` to your frontend URL (e.g. `https://your-app.vercel.app`).
+3. Deploy. Copy the service URL (e.g. `https://order-management-api.onrender.com`).
+
+Alternatively (Railway/Fly/any Node host): root `backend`, build `npm install`,
+start `npm start`, and set `ALLOWED_ORIGINS` + optional `STATUS_TRANSITION_MS`.
+
+### Frontend (Vercel)
+
+1. New Project → import this repo → set **Root Directory** to `frontend`.
+2. Framework preset **Vite** (build `npm run build`, output `dist`).
+3. Add env var `VITE_API_URL` = your backend URL from above.
+4. Deploy. `frontend/vercel.json` provides the SPA rewrite so refreshing routes works.
+
+**Netlify** alternative: root `frontend`, build `npm run build`, publish `dist`;
+`frontend/netlify.toml` already handles the SPA redirect.
+
+### Notes
+
+- Data is stored in memory, so orders reset when the backend restarts or redeploys.
+- After both are live, verify an order end-to-end and watch the status advance.
 
 ## License
 
