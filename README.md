@@ -128,6 +128,12 @@ cd backend  && npm test
 cd frontend && npm test
 ```
 
+## Live Demo
+
+- **Frontend:** [https://frontend-mu-tan-26.vercel.app](https://frontend-mu-tan-26.vercel.app)
+- **Backend API:** [https://order-management-api-6r0u.onrender.com](https://order-management-api-6r0u.onrender.com)
+- **API Menu:** [https://order-management-api-6r0u.onrender.com/api/menu](https://order-management-api-6r0u.onrender.com/api/menu)
+
 ## Deployment
 
 The frontend and backend are deployed separately and communicate over `VITE_API_URL` /
